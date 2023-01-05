@@ -45,10 +45,13 @@ public class AddBookServlet extends HttpServlet {
             // After fetching the all data we will create a new book variable and paas all the field.
             Books bk = new Books(bname, bdesc, authname, category);
             //Now we will create a try catch block to handle exception.
+          
             try {
                 // Create a new BooksDao variable and give the connection to the BooksDao Class
                 BooksDao bkdao = new BooksDao(ConnectionDao.getCon());
+                 
                 if (bkdao.addBook(bk)) {
+                
                     response.sendRedirect("index.jsp");
 
                 } else {

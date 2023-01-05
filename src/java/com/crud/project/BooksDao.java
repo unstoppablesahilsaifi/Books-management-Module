@@ -5,7 +5,6 @@
 package com.crud.project;
 
 import java.sql.*;
-
 /**
  *
  * @author saifi
