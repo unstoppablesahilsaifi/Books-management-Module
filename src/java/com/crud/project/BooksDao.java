@@ -24,7 +24,7 @@ public class BooksDao {
     // Here we are passing books type book object.
     public boolean addBook(Books book) {
         boolean test = false;
-        String q = "insert into books(bName,bDesc,aName,cat) values(?,?,?,?)";
+        String q = "insert into books(book_name,description,author_name,category) values(?,?,?,?)";
         try {
             PreparedStatement pst = this.con.prepareStatement(q);
             // Here we will set the data (we are getting the book name from the book object of the class books)
