@@ -14,10 +14,11 @@ public class ConnectionDao {
     public static Connection getCon() throws SQLException {
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
-            con=DriverManager.getConnection("jdbc:mysql://localhost:3306/book_management","root","almamun@123");
+            con=DriverManager.getConnection("jdbc:mysql://localhost:3306/book_management","root","root");
         }catch (Exception ex) {
             ex.printStackTrace();
         } 
         return con;
     }
+    
 }

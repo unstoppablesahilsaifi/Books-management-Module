@@ -48,8 +48,7 @@ public class AddBookServlet extends HttpServlet {
           
             try {
                 // Create a new BooksDao variable and give the connection to the BooksDao Class
-                BooksDao bkdao = new BooksDao(ConnectionDao.getCon());
-                 
+                BooksDao bkdao = new BooksDao(ConnectionDao.getCon());                    
                 if (bkdao.addBook(bk)) {
                 
                     response.sendRedirect("index.jsp");
