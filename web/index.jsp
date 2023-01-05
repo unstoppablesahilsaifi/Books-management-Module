@@ -39,14 +39,14 @@
                     <div class="col-md-3">
                         <h3>
                             Input Book Information</h3>
-                        <form action="AddBooksServlet" method="post">
+                        <form action="AddBookServlet" method="post">
                             <div class="form-group">
                                 <label>Book Name</label>
-                                <input class="form-control" name="bkname" place-holder="Book Name" required>
+                                <input class="form-control" name="bname" place-holder="Book Name" required>
                             </div>
                             <div class="form-group">
                                 <label>Description</label>
-                                <input class="form-control" name="bkdesc" place-holder="Book Name" required>
+                                <input class="form-control" name="bdesc" place-holder="Book Name" required>
                             </div>
                             <div class="form-group">
                                 <label>Author Name</label>
