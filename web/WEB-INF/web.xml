@@ -8,6 +8,10 @@
         <servlet-name>EditBookServlet</servlet-name>
         <servlet-class>com.crud.project.EditBookServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>DeleteBookServlet</servlet-name>
+        <servlet-class>com.crud.project.DeleteBookServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>AddBookServlet</servlet-name>
         <url-pattern>/AddBookServlet</url-pattern>
@@ -15,6 +19,10 @@
     <servlet-mapping>
         <servlet-name>EditBookServlet</servlet-name>
         <url-pattern>/EditBookServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>DeleteBookServlet</servlet-name>
+        <url-pattern>/DeleteBookServlet</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

@@ -112,4 +112,19 @@ public class BooksDao {
         
 
     }
+    //    delete books from database
+    
+    
+    public void deleteBook(int id){
+        try{
+            
+           String query= "delete from books where id=?";
+           PreparedStatement pt = this.con.prepareStatement(query);
+           pt.setInt(1, id);
+           pt.execute();
+            
+        }catch(Exception ex){
+            ex.printStackTrace();;
+        }
+    }
 }
