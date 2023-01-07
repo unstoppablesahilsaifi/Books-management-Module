@@ -65,4 +65,51 @@ public class BooksDao {
         }
         return book;
     }
+
+    //    get single book information in edit page
+    public Books getSingleBook(int id) {
+        Books bk = null;
+
+        try {
+            String query = "select * from books where id=? ";
+
+            PreparedStatement pt = this.con.prepareStatement(query);
+            pt.setInt(1, id);
+            ResultSet rs = pt.executeQuery();
+
+            while (rs.next()) {
+                int bid = rs.getInt("id");
+                String bname = rs.getString("book_name");
+                String bdesc = rs.getString("description");
+                String authname = rs.getString("author_name");
+                String category = rs.getString("category");
+                bk = new Books(bid, bname, bdesc, authname, category);
+            }
+        } catch (Exception ex) {
+            ex.printStackTrace();;
+        }
+        return bk;
+    }
+
+//    eidt book information
+    public boolean editBookInfo(Books book) {
+           boolean test=false;
+        try {
+            String query = "update books set book_name=?, description=?, author_name=?, category=? where id=?";
+            PreparedStatement pt = this.con.prepareStatement(query);
+            pt.setString(1, book.getBookName());
+            pt.setString(2, book.getBookDesc());
+            pt.setString(3, book.getAuthName());
+            pt.setString(4, book.getCategory());
+            pt.setInt(5, book.getId());
+
+            pt.executeUpdate();
+            test=true;
+        } catch (Exception ex) {
+            ex.printStackTrace();;
+        }
+        return test;
+        
+
+    }
 }
