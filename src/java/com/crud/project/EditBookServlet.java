@@ -6,6 +6,7 @@ package com.crud.project;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import static java.lang.System.out;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -37,38 +38,37 @@ public class EditBookServlet extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet EditBookServlet</title>");            
+            out.println("<title>Servlet EditBookServlet</title>");
             out.println("</head>");
             out.println("<body>");
             //Fetch data from  the edit form
-            int bid=Integer.parseInt(request.getParameter("bid"));
+            int bid = Integer.parseInt(request.getParameter("bid"));
             String bname = request.getParameter("bname");
             String bdesc = request.getParameter("bdesc");
-            String authname = request.getParameter("authname");          
+            String authname = request.getParameter("authname");
             String category = request.getParameter("category");
-           Books book = new Books();
-           book.setBookName(bname);
-           book.setBookDesc(bdesc);
-           book.setAuthName(authname);
-           book.setCategory(category);
-           book.setId(bid);
-            
+            Books book = new Books();
+            book.setBookName(bname);
+            book.setBookDesc(bdesc);
+            book.setAuthName(authname);
+            book.setCategory(category);
+            book.setId(bid);
+
             //create new bookDao object
-            try{
+            try {
                 BooksDao bkdao = new BooksDao(ConnectionDao.getCon());
-               boolean success=bkdao.addBook(book);
-               if (success){
-                   out.println("Edited Successfully");
-                   
-               }else{
-                   out.println("Something went wrong......");
-               }
-                
-            }catch(Exception e){
+                boolean success = bkdao.editBookInfo(book);
+                if (success) {
+                    out.println("Edited Successfully");
+
+                } else {
+                    out.println("Something went wrong......");
+                }
+
+            } catch (Exception e) {
                 e.printStackTrace();
             }
-            
-         
+        
             out.println("</body>");
             out.println("</html>");
         }
