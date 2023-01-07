@@ -4,7 +4,18 @@
     Author     : saifi
 --%>
 
+<%@page import="com.crud.project.Books"%>
+<%@page import="java.util.List"%>
+<%@page import="com.crud.project.Books"%>
+<%@page import="com.crud.project.ConnectionDao"%>
+<%@page import="com.crud.project.BooksDao"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@ taglib uri = "http://java.sun.com/jsp/jstl/core" prefix = "c"%>
+<%
+    BooksDao bookData = new BooksDao(ConnectionDao.getCon());
+    List<Books> book = bookData.getAllBooks();
+    request.setAttribute("BOOKS_LIST", book);
+%>
 <!doctype html>
 <html lang="en">
     <head>
@@ -80,16 +91,16 @@
                                 </tr>
                             </thead>
                             <tbody>
-                            <c:forEach var="tempBook" items="${BOOKS_LIST}">
-                                <tr>
-                                    <td>${tempBook.bookName }</td>
-                                    <td>${tempBook.bookDesc }</td>
-                                    <td>${tempBook.authName }</td>
-                                    <td>${tempBook.cat}</td>
-                                    <td><a href="editbook.jsp?id=${tempBook.id }">Edit</a> 
-                                        <a href="DeleteBookServlet?id=${tempBook.id}">Delete</a></td>
-                                </tr>
-                            </c:forEach>
+                                <c:forEach var="tempBook" items="${BOOKS_LIST}">
+                                    <tr>
+                                        <td>${tempBook.bookName }</td>
+                                        <td>${tempBook.bookDesc }</td>
+                                        <td>${tempBook.authName }</td>
+                                        <td>${tempBook.category}</td>
+                                        <td><a href="editbook.jsp?id=${tempBook.id }">Edit</a> 
+                                            <a href="DeleteBookServlet?id=${tempBook.id}">Delete</a></td>
+                                    </tr>
+                                </c:forEach>
                             </tbody>
                         </table>
                     </div>

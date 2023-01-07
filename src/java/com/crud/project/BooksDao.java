@@ -5,6 +5,9 @@
 package com.crud.project;
 
 import java.sql.*;
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  *
  * @author saifi
@@ -21,7 +24,6 @@ public class BooksDao {
     // 1. Add book to database.
 
     // Here we are passing books type book object.
-    
     public boolean addBook(Books book) {
         boolean test = false;
         String q = "insert into books(book_name,description,author_name,category) values(?,?,?,?)";
@@ -39,5 +41,28 @@ public class BooksDao {
         }
         return test;
 
+    }
+
+    // Retrive book data  from table
+    public List<Books> getAllBooks() {
+        List<Books> book = new ArrayList<>();
+        try {
+            String q = "select * from books";
+            PreparedStatement pt = this.con.prepareStatement(q);
+            ResultSet rs = pt.executeQuery();
+            while (rs.next()) {
+                int id = rs.getInt("id");
+                String bname = rs.getString("book_name");
+                String bdesc = rs.getString("description");
+                String aname = rs.getString("author_name");
+                String category = rs.getString("category");
+
+                Books row = new Books(id, bname, bdesc, aname, category);
+                book.add(row);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return book;
     }
 }
